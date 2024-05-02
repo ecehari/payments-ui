@@ -7,10 +7,13 @@ const SignIn = () : JSX.Element => {
     const handleLogin = ():void => {
         contextPointer.login({id:1,name:"matt",role:"admin"})
     }
+    const username: string =contextPointer.user.name;
+
     return (
         <>
             <p>This is where the login form would be </p>
             <button onClick={handleLogin}>Login</button>
+            <button>Logout</button>
         </>
     )
 }
