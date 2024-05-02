@@ -10,7 +10,7 @@ const SignIn = () : JSX.Element => {
     return (
         <>
             <p>This is where the login form would be </p>
-            <button onClick={handleLogin}></button>
+            <button onClick={handleLogin}>Login</button>
         </>
     )
 }
