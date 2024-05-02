@@ -4,9 +4,26 @@ import PageHeader from "./components/pageHeader/PageHeader";
 import Search from "./components/Search/Search";
 import Transactions from "./components/Transactions/Transactions";
 import NewTransaction from './components/NewTrans/NewTransaction';
+import { useState } from 'react';
+import { LoginContext, LoginContextType, UserType } from './context/context';
 
 function App() : JSX.Element  {
-    return (
+    const [user,setUser] = useState<UserType>({id:0, name:"", role:""})
+    console.log(user);
+    const login = (user: UserType) => {
+        setUser(user);
+    }
+    const logout= () => {
+        setUser({id:0, name:"", role:""});
+    }
+    const statefulContext : LoginContextType = {
+        user: user,
+        login: login,
+        logout: logout
+    }
+
+    return (    
+        <LoginContext.Provider value ={statefulContext} >
         <BrowserRouter>
             <PageHeader/>
             <Routes>
@@ -21,6 +38,7 @@ function App() : JSX.Element  {
                 <Route path="*" element={<h1>Page not found</h1>} /> 
             </Routes>
         </BrowserRouter>
+        </LoginContext.Provider>
     );
 }
 
